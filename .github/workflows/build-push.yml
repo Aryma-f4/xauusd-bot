@@ -32,4 +32,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}:latest
+          tags: ${{ env.REGISTRY }}/aryma-f4/xauusd-bot:latest
