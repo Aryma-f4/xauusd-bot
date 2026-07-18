@@ -1,0 +1,25 @@
+services:
+  xauusd-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xauusd-bot
+    restart: unless-stopped
+    volumes:
+      - xauusd-bot-data:/app/data
+    environment:
+      - BYBIT_API_KEY=${BYBIT_API_KEY}
+      - BYBIT_API_SECRET=${BYBIT_API_SECRET}
+      - USE_TESTNET=${USE_TESTNET:-true}
+      - SYMBOL=XAUUSD
+      - ACCOUNT_BALANCE=${ACCOUNT_BALANCE:-100}
+      - RISK_PER_TRADE_PCT=${RISK_PER_TRADE_PCT:-10}
+      - MAX_TRADES_PER_DAY=${MAX_TRADES_PER_DAY:-5}
+      - MAX_DAILY_LOSS_PCT=${MAX_DAILY_LOSS_PCT:-20}
+      - CHECK_INTERVAL=${CHECK_INTERVAL:-300}
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+
+volumes:
+  xauusd-bot-data:
+    driver: local
